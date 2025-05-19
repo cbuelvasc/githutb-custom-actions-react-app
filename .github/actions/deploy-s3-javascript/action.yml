@@ -1,5 +1,18 @@
-name: Deploy S3 JavaScript
-description: Deploy a static site to an AWS S3 bucket
+name: 'Deploy S3 JavaScript'
+description: 'Deploy a static site to an AWS S3 bucket'
+inputs:
+  bucket:
+    description: 'The name of the S3 bucket to deploy to'
+    required: true
+    default: 'my-bucket'
+  bucket-region:
+    description: 'The region of the S3 bucket to deploy to'
+    required: false
+    default: 'us-east-1'
+  dist-folder:
+    description: 'The folder to deploy to the S3 bucket'
+    required: true
+    default: 'dist'
 runs:
   using: 'node20'
   main: 'main.js'
