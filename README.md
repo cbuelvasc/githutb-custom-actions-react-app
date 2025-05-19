@@ -37,22 +37,35 @@ The project uses GitHub Actions for CI/CD with the following jobs:
 
 Workflow triggers on pushes to the `main` branch.
 
+## Custom GitHub Actions
+
+This project includes the following custom GitHub Actions:
+
+1. **cached-deps**: Action to get and cache dependencies via npm for faster workflow execution.
+2. **deploy-s3-docker**: Docker-based action to deploy a static site to an AWS S3 bucket.
+3. **deploy-s3-javascript**: JavaScript-based action to deploy a static site to an AWS S3 bucket.
+
 ## Project Structure
 
 ```
 githutb-custom-actions-react-app
-├── .github/workflows/    # GitHub Actions workflow configurations
-├── public/               # Public assets
-├── src/                  # Source code
-│   ├── assets/           # Static assets like images
-│   ├── components/       # React components
-│   └── test/             # Test files
-├── .eslintrc.json        # ESLint configuration
-├── .gitignore            # Git ignore file
-├── index.html            # Entry HTML file
-├── package.json          # NPM package definition
-├── vite.config.js        # Vite configuration
-└── README.md             # This file
+├── .github/                # GitHub configuration
+│   ├── actions/            # Custom GitHub Actions
+│   │   ├── cached-deps/    # Action to cache dependencies
+│   │   ├── deploy-s3-docker/    # Docker-based S3 deployment action
+│   │   └── deploy-s3-javascript/    # JavaScript-based S3 deployment action
+│   └── workflows/          # GitHub Actions workflow configurations
+├── public/                 # Public assets
+├── src/                    # Source code
+│   ├── assets/             # Static assets like images
+│   ├── components/         # React components
+│   └── test/               # Test files
+├── .eslintrc.json          # ESLint configuration
+├── .gitignore              # Git ignore file
+├── index.html              # Entry HTML file
+├── package.json            # NPM package definition
+├── vite.config.js          # Vite configuration
+└── README.md               # This file
 ```
 
 ## Workflow Details
@@ -63,3 +76,4 @@ The GitHub Actions workflow `deployment.yml` includes:
 - Artifact handling for build outputs
 - Automatic test report generation on failures
 - Multi-stage pipeline ensuring proper sequential execution
+- Custom deployment actions for AWS S3
