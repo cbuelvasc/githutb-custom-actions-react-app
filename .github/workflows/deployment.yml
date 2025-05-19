@@ -58,14 +58,15 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Get build artifacts
+      - name: Get Build Artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist-files
           path: ./dist
-      - name: Output contents
+      - name: Output Contents
         run: ls
-      - name: Deploy site
+      - name: Deploy Site
+        id: deploy-s3-javascript
         uses: ./.github/actions/deploy-s3-javascript
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -74,3 +75,6 @@ jobs:
           bucket: github-custom-javascript-action-hosting
           bucket-region: us-east-1
           dist-folder: ./dist
+      - name: Output Website URL
+        run: |
+          echo "Website URL: ${{ steps.deploy-s3-javascript.outputs.website-url }}"
