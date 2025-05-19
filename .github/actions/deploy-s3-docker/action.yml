@@ -1,0 +1,22 @@
+name: 'Deploy S3 Docker'
+description: 'Deploy a static site to an AWS S3 bucket'
+inputs:
+  bucket:
+    description: 'The name of the S3 bucket to deploy to'
+    required: true
+  bucket-region:
+    description: 'The region of the S3 bucket to deploy to'
+    required: false
+    default: 'us-east-1'
+  dist-folder:
+    description: 'The folder to deploy to the S3 bucket'
+    required: true
+outputs:
+  website-url:
+    description: 'The URL of the deployed website'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

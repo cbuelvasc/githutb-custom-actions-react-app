@@ -66,8 +66,8 @@ jobs:
       - name: Output Contents
         run: ls
       - name: Deploy Site
-        id: deploy-s3-javascript
-        uses: ./.github/actions/deploy-s3-javascript
+        id: deploy-s3-docker
+        uses: ./.github/actions/deploy-s3-docker
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -77,4 +77,4 @@ jobs:
           dist-folder: ./dist
       - name: Output Website URL
         run: |
-          echo "Website URL: ${{ steps.deploy-s3-javascript.outputs.website-url }}"
+          echo "Website URL: ${{ steps.deploy-s3-docker.outputs.website-url }}"
