@@ -26,6 +26,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load and Cache Dependencies
         uses: ./.github/actions/cached-deps
+      - name: Install dependencies
+        run: npm i vite@latest -D
       - name: Test code
         id: run-tests
         run: npm run test
