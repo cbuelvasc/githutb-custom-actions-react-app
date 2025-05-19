@@ -1,0 +1,6 @@
+name: Deploy S3 JavaScript
+description: Deploy a static site to an AWS S3 bucket
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
